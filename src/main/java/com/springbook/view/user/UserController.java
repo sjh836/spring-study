@@ -11,6 +11,10 @@ import com.springbook.biz.user.impl.UserDAO;
 @Controller
 public class UserController
 {
+	public UserController()
+	{
+		System.out.println("UserController °´Ã¼ »ý¼º");
+	}
 	@RequestMapping("/login.do")
 	public String login(UserVO vo, UserDAO userDAO, HttpSession session)
 	{

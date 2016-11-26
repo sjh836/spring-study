@@ -2,8 +2,6 @@ package com.springbook.biz.board.impl;
 
 import java.util.List;
 
-import javax.annotation.Resource;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -13,9 +11,13 @@ import com.springbook.biz.board.BoardVO;
 @Service("boardService")
 public class BoardServiceImpl implements BoardService
 {
-	@Resource(name="boardDAO")
+	@Autowired
 	private BoardDAO boardDAO;
 	
+	public BoardServiceImpl()
+	{
+		System.out.println("BoardServiceImpl °´Ã¼ »ý¼º");
+	}
 	public void insertBoard(BoardVO vo)
 	{
 		boardDAO.insertBoard(vo);

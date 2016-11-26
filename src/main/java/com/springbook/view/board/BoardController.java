@@ -3,8 +3,6 @@ package com.springbook.view.board;
 import java.util.HashMap;
 import java.util.Map;
 
-import javax.annotation.Resource;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -19,9 +17,13 @@ import com.springbook.biz.board.BoardVO;
 @SessionAttributes("board")
 public class BoardController
 {
-	@Resource(name="boardService")
+	@Autowired
 	private BoardService boardService;
 	
+	public BoardController()
+	{
+		System.out.println("BoardController 객체 생성");
+	}
 	//글 등록
 	@RequestMapping("/insertBoard.do")
 	public String insertBoard(BoardVO vo)
