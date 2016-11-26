@@ -19,6 +19,11 @@
 	
 	<bean id="userDAO" class="com.springbook.biz.user.impl.UserDAO" />
 	
+	<!-- 파일 업로드 설정 -->
+	<bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+		<property name="maxUploadSize" value="10000000" />
+	</bean>
+	
 	<!-- DateSource 설정 -->
 	<bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close">
 		<property name="driverClassName" value="com.mysql.jdbc.Driver" />

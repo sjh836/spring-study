@@ -72,7 +72,7 @@
 			<div class="col-md-12">
 				<h1>인턴 게시판</h1>
 				
-				<form action="insertBoard.do" method="post">
+				<form action="insertBoard.do" method="post" enctype="multipart/form-data">
 					<table class="table table-bordered">
 						<tr>
 							<td>제목</td>
@@ -87,12 +87,16 @@
 							<td align="left"><textarea class="form-control" name="content" cols="40" rows="10"></textarea></td>
 						</tr>
 						<tr>
+							<td>업로드</td>
+							<td align="left"><input class="form-control" type="file" name="uploadFile" /></td>
+						</tr>
+						<tr>
 							<td colspan="2" align="center"><input class="btn btn-default" type="submit" value="새글 등록" /></td>
 						</tr>
 					</table>
 				</form>
 				<hr>
-				<a href="getBoardList.jsp" class="btn btn-default">글 목록가기</a>
+				<a href="getBoardList.do" class="btn btn-default">글 목록가기</a>
 			</div>
 		</div>
 	</div>

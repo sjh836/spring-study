@@ -11,7 +11,7 @@ import org.springframework.stereotype.Repository;
 import com.springbook.biz.board.BoardVO;
 import com.springbook.biz.common.JDBCUtil;
 
-@Repository("boardDAO")
+@Repository
 public class BoardDAO
 {
 	//JDBC 관련 변수
@@ -20,11 +20,12 @@ public class BoardDAO
 	private ResultSet rs=null;
 	
 	//SQL명령어들
-	private final String BOARD_INSERT="insert into board(title, writer, content, regdate) values(?,?,?,now());";
+	private final String BOARD_INSERT="insert into board(title, writer, content, regdate, filepath) values(?,?,?,now(),?);";
 	private final String BOARD_UPDATE="update board set title=?, content=? where seq=?;";
 	private final String BOARD_DELETE="delete from board where seq=?;";
 	private final String BOARD_GET="select * from board where seq=?;";
-	private final String BOARD_LIST="select * from board order by seq desc;";
+	private final String BOARD_LIST_T="select * from board where title like CONCAT('%',?,'%') order by seq desc;";
+	private final String BOARD_LIST_C="select * from board where content like CONCAT('%',?,'%') order by seq desc;";
 	
 	//CRUD기능
 	//글등록
@@ -38,6 +39,7 @@ public class BoardDAO
 			stmt.setString(1, vo.getTitle());
 			stmt.setString(2, vo.getWriter());
 			stmt.setString(3, vo.getContent());
+			stmt.setString(4, "D:/web upload/"+vo.getUploadFile().getOriginalFilename());
 			//stmt.setString(4, "now()");
 			stmt.executeUpdate();
 		}
@@ -132,7 +134,9 @@ public class BoardDAO
 		try
 		{
 			conn=JDBCUtil.getConnection();
-			stmt=conn.prepareStatement(BOARD_LIST);
+			if(vo.getSearchCondition().equals("TITLE")) stmt=conn.prepareStatement(BOARD_LIST_T);
+			else if(vo.getSearchCondition().equals("CONTENT")) stmt=conn.prepareStatement(BOARD_LIST_C);
+			stmt.setString(1, vo.getSearchKeyword());
 			rs=stmt.executeQuery();
 			while(rs.next())
 			{

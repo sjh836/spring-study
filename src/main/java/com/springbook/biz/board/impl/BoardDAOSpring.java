@@ -8,24 +8,26 @@ import org.springframework.stereotype.Repository;
 
 import com.springbook.biz.board.BoardVO;
 
+@Repository
 public class BoardDAOSpring
 {
 	@Autowired
 	private JdbcTemplate jdbcTemplate;
 	
 	//SQL명령어들
-	private final String BOARD_INSERT="insert into board(title, writer, content, regdate) values(?,?,?,now());";
-	private final String BOARD_UPDATE="update board set title=?, content=?, where seq=?;";
+	private final String BOARD_INSERT="insert into board(title, writer, content, regdate, filepath) values(?,?,?,now(),?);";
+	private final String BOARD_UPDATE="update board set title=?, content=? where seq=?;";
 	private final String BOARD_DELETE="delete from board where seq=?;";
 	private final String BOARD_GET="select * from board where seq=?;";
-	private final String BOARD_LIST="select * from board order by seq desc;";
+	private final String BOARD_LIST_T="select * from board where title like CONCAT('%',?,'%') order by seq desc;";
+	private final String BOARD_LIST_C="select * from board where content like CONCAT('%',?,'%') order by seq desc;";
 	
 	//CRUD기능
 	//글등록
 	public void insertBoard(BoardVO vo)
 	{
 		System.out.println("---> Spring JDBC로 insertBoard() 기능 처리");
-		jdbcTemplate.update(BOARD_INSERT, vo.getTitle(), vo.getWriter(), vo.getContent());
+		jdbcTemplate.update(BOARD_INSERT, vo.getTitle(), vo.getWriter(), vo.getContent(), "D:/web upload/"+vo.getUploadFile().getOriginalFilename());
 	}
 	
 	//글수정
@@ -54,6 +56,9 @@ public class BoardDAOSpring
 	public List<BoardVO> getBoardList(BoardVO vo)
 	{
 		System.out.println("---> Spring JDBC로 getBoardList() 기능 처리");
-		return jdbcTemplate.query(BOARD_LIST, new BoardRowMapper());
+		Object[] args={vo.getSearchKeyword()};
+		if(vo.getSearchCondition().equals("TITLE")) return jdbcTemplate.query(BOARD_LIST_T, args, new BoardRowMapper());
+		else if(vo.getSearchCondition().equals("CONTENT")) return jdbcTemplate.query(BOARD_LIST_C, args, new BoardRowMapper());
+		return null;
 	}
 }
