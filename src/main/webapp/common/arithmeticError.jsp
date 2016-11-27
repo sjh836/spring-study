@@ -1,17 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<%@ page import="com.springbook.biz.board.impl.BoardDAO" %>
-<%@ page import="com.springbook.biz.board.BoardVO" %>
-
-<%
-	// 세션에 저장된 글 목록을 꺼낸다.
-	BoardVO board=(BoardVO)request.getAttribute("board");
-%>
 
 <!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="utf-8">
-<title>인턴 글 상세</title>
+<title>인턴커뮤니티</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <meta name="description" content="" />
 <meta name="author" content="http://bootstraptaste.com" />
@@ -39,21 +32,21 @@
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </button>
-                    <a class="navbar-brand" href="index.jsp"><span>N</span>exmotion 인턴</a>
+                    <a class="navbar-brand" href="#"><span>N</span>exmotion 인턴</a>
                 </div>
                 <div class="navbar-collapse collapse ">
                     <ul class="nav navbar-nav">
-                        <li><a href="index.jsp">Home</a></li>
+                        <li><a href="#">Home</a></li>
                         <li class="dropdown ">
-                            <a href="#" class="dropdown-toggle " data-toggle="dropdown" data-hover="dropdown" data-delay="0" data-close-others="false">STUDY <b class=" icon-angle-down"></b></a>
+                            <a href="#" class="dropdown-toggle " data-toggle="dropdown" data-hover="dropdown" data-delay="0" data-close-others="false">test <b class=" icon-angle-down"></b></a>
                             <ul class="dropdown-menu">
-                                <li><a href="#">커리큘럼</a></li>
-                                <li><a href="#">회사소개</a></li>
-								<li><a href="#">기술소개</a></li>
+                                <li><a href="#">test1</a></li>
+                                <li><a href="#">test2</a></li>
+								<li><a href="#">test3</a></li>
                             </ul>
                         </li>
                         <li><a href="getBoardList.do">Board</a></li>
-                        <li><a href="#">About</a></li>
+                        <li><a href="#">${userName}님</a></li>
                         <li class="active"><a href="logout.do">Logout</a></li>
                     </ul>
                 </div>
@@ -67,7 +60,7 @@
 			<div class="col-lg-12">
 				<ul class="breadcrumb">
 					<li><a href="#"><i class="fa fa-home"></i></a><i class="icon-angle-right"></i></li>
-					<li class="active">Board</li>
+					<li class="active">Error</li>
 				</ul>
 			</div>
 		</div>
@@ -77,42 +70,8 @@
 	<div class="container">
 		<div class="row">
 			<div class="col-md-12">
-				<h1>인턴 게시판</h1>
-				
-				<form action="updateBoard.do" method="post">
-				<input name="seq" type="hidden" value=<%= board.getSeq() %> />
-				<table class="table table-bordered">
-					<tr>
-						<td>제목</td>
-						<td align="left"><input class="form-control" name="title" type="text" value="<%= board.getTitle() %>" /></td>
-					</tr>
-					<tr>
-						<td>작성자</td>
-						<td align="left"><%= board.getWriter() %></td>
-					</tr>
-					<tr>
-						<td>내용</td>
-						<td align="left"><textarea class="form-control" name="content" cols="40" rows="10"><%= board.getContent() %></textarea>
-					</tr>
-					<tr>
-						<td>등록일</td>
-						<td align="left"><%= board.getRegDate() %></td>
-					</tr>
-					<tr>
-						<td>조회수</td>
-						<td align="left"><%= board.getCnt() %></td>
-					</tr>
-					<tr>
-						<td colspan="2" align="center">
-							<input type="submit" value="글 수정" class="btn btn-default"/>
-						</td>
-					</tr>
-				</table>
-				</form>
-				
-				<a href="insertBoard.jsp" class="btn btn-default">글등록</a>&nbsp;&nbsp;&nbsp;
-				<a href="deleteBoard.do?seq=<%= board.getSeq() %>" class="btn btn-default">글삭제</a>&nbsp;&nbsp;&nbsp;
-				<a href="getBoardList.do" class="btn btn-default">글목록</a>
+				<h1>에러 화면</h1>
+				<div class="col-xs-12">${exception.message}</div>
 			</div>
 		</div>
 	</div>

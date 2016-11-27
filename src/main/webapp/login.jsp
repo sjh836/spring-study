@@ -30,21 +30,21 @@
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </button>
-                    <a class="navbar-brand" href="#"><span>N</span>exmotion 인턴</a>
+                    <a class="navbar-brand" href="index.jsp"><span>N</span>exmotion 인턴</a>
                 </div>
                 <div class="navbar-collapse collapse ">
                     <ul class="nav navbar-nav">
-                        <li><a href="#">Home</a></li>
+                        <li><a href="index.jsp">Home</a></li>
                         <li class="dropdown ">
-                            <a href="#" class="dropdown-toggle " data-toggle="dropdown" data-hover="dropdown" data-delay="0" data-close-others="false">test <b class=" icon-angle-down"></b></a>
+                            <a href="#" class="dropdown-toggle " data-toggle="dropdown" data-hover="dropdown" data-delay="0" data-close-others="false">STUDY <b class=" icon-angle-down"></b></a>
                             <ul class="dropdown-menu">
-                                <li><a href="#">test1</a></li>
-                                <li><a href="#">test2</a></li>
-								<li><a href="#">test3</a></li>
+                                <li><a href="#">커리큘럼</a></li>
+                                <li><a href="#">회사소개</a></li>
+								<li><a href="#">기술소개</a></li>
                             </ul>
                         </li>
                         <li><a href="getBoardList.do">Board</a></li>
-                        <li><a href="#">null</a></li>
+                        <li><a href="#">ABOUT</a></li>
                         <li class="active"><a href="login.jsp">Login</a></li>
                     </ul>
                 </div>

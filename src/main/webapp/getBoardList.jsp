@@ -10,13 +10,11 @@
 %>
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ko">
 <head>
 <meta charset="utf-8">
-<title>인턴커뮤니티</title>
+<title>인턴 게시판</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<meta name="description" content="" />
-<meta name="author" content="http://bootstraptaste.com" />
 <!-- css -->
 <link href="resources/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
 <link href="resources/bootstrap/css/fancybox/jquery.fancybox.css" rel="stylesheet">
@@ -41,21 +39,21 @@
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </button>
-                    <a class="navbar-brand" href="#"><span>N</span>exmotion 인턴</a>
+                    <a class="navbar-brand" href="index.jsp"><span>N</span>exmotion 인턴</a>
                 </div>
                 <div class="navbar-collapse collapse ">
                     <ul class="nav navbar-nav">
                         <li><a href="#">Home</a></li>
                         <li class="dropdown ">
-                            <a href="#" class="dropdown-toggle " data-toggle="dropdown" data-hover="dropdown" data-delay="0" data-close-others="false">test <b class=" icon-angle-down"></b></a>
+                            <a href="#" class="dropdown-toggle " data-toggle="dropdown" data-hover="dropdown" data-delay="0" data-close-others="false">STUDY <b class=" icon-angle-down"></b></a>
                             <ul class="dropdown-menu">
-                                <li><a href="#">test1</a></li>
-                                <li><a href="#">test2</a></li>
-								<li><a href="#">test3</a></li>
+                                <li><a href="#">커리큘럼</a></li>
+                                <li><a href="#">회사소개</a></li>
+								<li><a href="#">기술소개</a></li>
                             </ul>
                         </li>
-                        <li><a href="getBoardList.do">Board</a></li>
-                        <li><a href="#">${userName}님</a></li>
+                        <li><a href="getBoardList.do">BOARD</a></li>
+                        <li><a href="#">ABOUT</a></li>
                         <li class="active"><a href="logout.do">Logout</a></li>
                     </ul>
                 </div>

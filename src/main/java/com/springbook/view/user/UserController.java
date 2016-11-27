@@ -4,6 +4,7 @@ import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.springbook.biz.user.UserVO;
 import com.springbook.biz.user.impl.UserDAO;
@@ -15,11 +16,15 @@ public class UserController
 	{
 		System.out.println("UserController 객체 생성");
 	}
-	@RequestMapping("/login.do")
+	@RequestMapping(value="/login.do", method=RequestMethod.POST)
 	public String login(UserVO vo, UserDAO userDAO, HttpSession session)
 	{
 		System.out.println("UserController -> 로그인처리");
 		
+		if(vo.getId()==null||vo.getId().equals(""))
+		{
+			throw new IllegalArgumentException("아이디는 반드시 입력해야 합니다");
+		}
 		UserVO user=userDAO.getUser(vo);
 		if(userDAO.getUser(vo)!=null)
 		{
